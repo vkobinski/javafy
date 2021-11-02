@@ -1,0 +1,59 @@
+.button{
+	-fx-border-color: transparent;
+    -fx-border-width: 0;
+    -fx-background-radius: 0;
+    -fx-background-color: transparent;
+}
+
+.button:hover{
+	-fx-cursor: hand;
+}
+
+.button:pressed{
+	-fx-effect: dropshadow(three-pass-box, #FF55E4, 10, 0, 0, 0);
+}
+
+#pane{
+	-fx-background-color: #3b225b;
+}
+
+.text-area .content{
+	-fx-background-color: #3a0751;
+	-fx-cursor: default;
+}
+
+.slider .track{
+	-fx-background-color: linear-gradient(to right, #2D819D 20%, #969696 20%);
+}
+
+.text-area{
+	-fx-text-fill: #ffd54f;
+}
+
+.label{
+	-fx-text-fill: #ffd54f;
+}
+
+.slider{
+	-fx-padding: 3;
+}
+
+#progressSlider .track {
+    -fx-background-color: #ffff;
+}
+
+.slider .thumb{
+	-fx-background-color: #ffd54f;
+}
+
+#volumeSlider .track {
+    -fx-background-color: #ffff;
+}
+
+.scroll-pane > .viewport{
+	-fx-background-color: #3a0751;
+}
+
+#musicaSelecionada{
+	-fx-background-color: #a32490;
+}

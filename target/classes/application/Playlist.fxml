@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="600.0" maxWidth="600.0" minHeight="468.0" minWidth="600.0" prefHeight="493.0" prefWidth="600.0" style="-fx-background-color: #3b225b;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.PlaylistController">
+   <children>
+      <Label layoutX="36.0" layoutY="28.0" style="-fx-text-fill: #ffd54f;" text="Selecione a Playlist:">
+         <font>
+            <Font name="Ubuntu Bold" size="16.0" />
+         </font></Label>
+      <ComboBox fx:id="playlistList" layoutX="36.0" layoutY="67.0" prefHeight="27.0" prefWidth="406.0" />
+      <Label layoutX="36.0" layoutY="122.0" style="-fx-text-fill: #ffd54f;" text="Adicione uma música:">
+         <font>
+            <Font name="Ubuntu Bold" size="18.0" />
+         </font>
+      </Label>
+      <ScrollPane hbarPolicy="NEVER" layoutX="36.0" layoutY="168.0" prefHeight="200.0" prefWidth="530.0">
+         <content>
+            <VBox fx:id="musicBox" prefHeight="200.0" prefWidth="528.0" spacing="2.0">
+               <padding>
+                  <Insets left="5.0" top="2.0" />
+               </padding>
+            </VBox>
+         </content>
+      </ScrollPane>
+      <Button fx:id="addToPlaylist" layoutX="36.0" layoutY="406.0" mnemonicParsing="false" onAction="#addMusic" text="Adicionar na Playlist" />
+      <Button fx:id="newPlaylistButton" layoutX="199.0" layoutY="406.0" mnemonicParsing="false" onAction="#newPlaylist" text="Nova Playlist" />
+      <Label fx:id="adicionado" layoutX="36.0" layoutY="457.0" style="-fx-text-fill: #ffd54f;">
+         <font>
+            <Font name="Ubuntu Bold" size="16.0" />
+         </font>
+      </Label>
+      <Button fx:id="apagarBtn" layoutX="312.0" layoutY="406.0" mnemonicParsing="false" onAction="#apagarPlaylist" text="Apagar PlayList" />
+   </children>
+</AnchorPane>

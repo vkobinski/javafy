@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.geometry.Rectangle2D?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.GaussianBlur?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SampleController">
+   <children>
+      <ImageView fx:id="backgroundImage" fitHeight="734.0" fitWidth="462.0" layoutX="-26.0" layoutY="-12.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1; -fx-scale-y: 1;" AnchorPane.bottomAnchor="-2.0" AnchorPane.leftAnchor="-26.0" AnchorPane.topAnchor="-12.0">
+         <image>
+            <Image url="@../images/bdcf5656423c10a27ea82ae880f5488e.png" />
+         </image>
+         <effect>
+            <GaussianBlur radius="36.25" />
+         </effect>
+         <viewport>
+            <Rectangle2D />
+         </viewport>
+      </ImageView>
+      <HBox alignment="CENTER" layoutX="80.0" layoutY="412.0" prefHeight="132.0" prefWidth="250.0" style="-fx-spacing: 45;" AnchorPane.leftAnchor="80.0">
+         <children>
+           <Button fx:id="previousButton" mnemonicParsing="false" onAction="#previousMedia" prefHeight="0.0" prefWidth="0.0">
+               <font>
+                  <Font size="11.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="63.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/back.png" />
+                     </image></ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="playButton" maxHeight="0.0" maxWidth="0.0" minHeight="0.0" minWidth="0.0" mnemonicParsing="false" onAction="#playMedia" prefHeight="0.0" prefWidth="0.0" style="-fx-padding: 10;">
+               <graphic>
+                  <ImageView fx:id="playPauseImage" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/play.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="nextButton" mnemonicParsing="false" onAction="#nextMedia" prefHeight="0.0" prefWidth="0.0">
+               <font>
+                  <Font size="11.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="40.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/next.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="shuffle" mnemonicParsing="false" onAction="#shuffleMedia" text="Shuffle" />
+         </children>
+      </HBox>
+      <Label fx:id="songLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="88.0" layoutY="36.0" text="MP3 Player" AnchorPane.leftAnchor="88.0">
+         <font>
+            <Font name="Ubuntu" size="19.0" />
+         </font>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Label>
+      <Slider fx:id="progressSlider" layoutX="80.0" layoutY="358.0" prefHeight="54.0" prefWidth="260.0" AnchorPane.leftAnchor="80.0">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Slider>
+      <Label fx:id="musicTime" layoutX="80.0" layoutY="416.0" text="00:00/00:00" AnchorPane.leftAnchor="80.0">
+         <font>
+            <Font name="Ubuntu Mono" size="18.0" />
+         </font>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Label>
+      <ImageView fx:id="albumCover" fitHeight="250.0" fitWidth="250.0" layoutX="72.0" layoutY="94.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="80.0">
+         <image>
+            <Image url="@../images/3ed2d4678c4d93fe5bac15aabeb19d22.png" />
+         </image>
+         <effect>
+            <DropShadow />
+         </effect>
+      </ImageView>
+      <HBox layoutX="102.0" layoutY="516.0" prefHeight="36.0" prefWidth="200.0" style="-fx-spacing: 5;" AnchorPane.leftAnchor="102.0">
+         <children>
+            <ImageView fx:id="muteButton" fitHeight="150.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/som.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <Slider fx:id="volumeSlider" max="100.0" prefHeight="36.0" prefWidth="150.0" value="50.0">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Slider>
+         </children>
+      </HBox>
+      <Label layoutX="575.0" layoutY="39.0" text="Letra">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <TextArea fx:id="lyricArea" editable="false" layoutX="572.0" layoutY="108.0" prefHeight="320.0" prefWidth="752.0" style="-fx-background-color: purple;">
+         <font>
+            <Font name="Ubuntu" size="19.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor>
+         <effect>
+            <DropShadow />
+         </effect>
+      </TextArea>
+      <VBox layoutX="572.0" layoutY="500.0" prefHeight="156.0" prefWidth="706.0" spacing="20.0">
+         <children>
+            <Label fx:id="songLabelName" text="Música:">
+               <font>
+                  <Font name="Ubuntu" size="19.0" />
+               </font>
+            </Label>
+            <Label fx:id="artistLabelName" text="Artista:">
+               <font>
+                  <Font name="Ubuntu" size="19.0" />
+               </font>
+            </Label>
+            <Label fx:id="songYearLabel" text="Ano:">
+               <font>
+                  <Font name="Ubuntu" size="19.0" />
+               </font>
+            </Label>
+         </children>
+         <padding>
+            <Insets left="5.0" top="5.0" />
+         </padding>
+      </VBox>
+      <HBox alignment="CENTER_LEFT" layoutX="137.0" layoutY="688.0" prefHeight="36.0" prefWidth="1304.0" style="-fx-background-color: #ffd54f;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <ToolBar prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #ffd54f;">
+               <items>
+                  <ImageView fitHeight="40.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/27130.png" />
+                     </image>
+                  </ImageView>
+                  <Label style="-fx-text-fill: black;" text="JavaFy">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <font>
+                        <Font name="Ubuntu Bold" size="16.0" />
+                     </font>
+                     <padding>
+                        <Insets left="5.0" />
+                     </padding>
+                  </Label>
+               </items>
+            </ToolBar>
+            <Button fx:id="playlistBtn" mnemonicParsing="false" onAction="#gerenciarPlaylist" text="Gerenciar PlayLists">
+               <font>
+                  <Font name="Ubuntu" size="14.0" />
+               </font>
+            </Button>
+         </children>
+      </HBox>
+      <ComboBox fx:id="playlistList" layoutX="127.0" layoutY="593.0" onAction="#mudarPlaylist" prefWidth="150.0" />
+      <ScrollPane hbarPolicy="NEVER" layoutX="340.0" layoutY="94.0" prefHeight="250.0" prefWidth="200.0">
+         <content>
+            <VBox fx:id="playlistAtualTocando" prefHeight="250.0" prefWidth="200.0" spacing="5.0">
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+               <padding>
+                  <Insets left="2.0" />
+               </padding>
+            </VBox>
+         </content>
+      </ScrollPane>
+   </children>
+</AnchorPane>

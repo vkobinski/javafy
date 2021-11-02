@@ -1,0 +1,7 @@
+.check-box{
+	-fx-text-fill: #ffd54f;
+}
+
+.scroll-pane > .viewport{
+	-fx-background-color: #3a0751;
+}
