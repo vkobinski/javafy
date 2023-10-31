@@ -21,7 +21,7 @@ public class JavaRunCommand {
         File script = new File("script.py");	
         	
         try {
-        	String comando = "python " + script.getAbsolutePath() + " " + song.toString();
+        	String comando = " C:\\Users\\games\\AppData\\Local\\Programs\\Python\\Python310\\python.exe " + script.getAbsolutePath() + " " + song.toString();
         	Process p = Runtime.getRuntime().exec(comando);
             
             BufferedReader stdInput = new BufferedReader(new 

@@ -1,6 +1,7 @@
 package application;
 	
 import java.io.File;
+import java.util.Objects;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -15,7 +16,7 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		try {
 			Image iconImage = new Image(getClass().getResource("som.png").toURI().toString());
-			AnchorPane root = (AnchorPane) FXMLLoader.load(getClass().getResource("Sample.fxml"));
+			AnchorPane root = (AnchorPane) FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Sample.fxml")));
 			Scene scene = new Scene(root,1280,720);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);

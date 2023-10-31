@@ -14,4 +14,5 @@ recognize_generator = shazam.recognizeSong()
 json_obj = json.loads(json.dumps((next(recognize_generator))))
 del json_obj[0]
 json_obj = json_obj[0]
-print(json_obj)
+json_str = json.dumps(json_obj)
+print(json_str.encode('utf-8').decode('cp1252', 'replace'))

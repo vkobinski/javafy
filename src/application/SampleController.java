@@ -368,6 +368,8 @@ public class SampleController implements Initializable {
 
 	public void changeAlbumCover(String url, String url2) {
 		try {
+			System.out.println(url);
+			System.out.println(url2);
 			boolean exists = new File("covers/"
 					+ songs.get(songNumber).toString().replace(".mp3", "").replace("music/", "") + "Cover.jpg")
 							.exists();
@@ -401,32 +403,43 @@ public class SampleController implements Initializable {
 		Task<Void> task = new Task<Void>() {
 			@Override
 			public Void call() {
-				JavaRunCommand jrc = new JavaRunCommand();
-				String results = jrc.getMetadata(songs.get(songNumber)).get(0);
-				JSONObject jo = new JSONObject(results);
-				String url = jo.getJSONObject("track").getJSONObject("images").get("coverarthq").toString();
-				String url2 = jo.getJSONObject("track").getJSONObject("images").getString("background").toString();
-				String songName = jo.getJSONObject("track").getString("title");
-				String artistName = jo.getJSONObject("track").getString("subtitle");
-				String songYear = jo.getJSONObject("track").getJSONArray("sections").getJSONObject(0)
-						.getJSONArray("metadata").getJSONObject(2).getString("text");
 				try {
-					Platform.runLater(() -> {
-						songNameShazam(songName, artistName, songYear);
-					});
-					JSONArray name = jo.getJSONObject("track").getJSONArray("sections").getJSONObject(1)
-							.getJSONArray("text");
-					String lyric = "";
-					for (Object linha : name) {
-						lyric = lyric + linha;
-						lyric = lyric + "\n";
+
+					JavaRunCommand jrc = new JavaRunCommand();
+					String results = jrc.getMetadata(songs.get(songNumber)).get(0);
+					JSONObject jo = new JSONObject(results);
+					System.out.println(jo);
+					String url = jo.getJSONObject("track").getJSONObject("images").get("coverarthq").toString();
+					String url2 = jo.getJSONObject("track").getJSONObject("images").getString("background").toString();
+					String songName = jo.getJSONObject("track").getString("title");
+					String artistName = jo.getJSONObject("track").getString("subtitle");
+					String songYear = "";
+					try {
+						songYear = jo.getJSONObject("track").getJSONArray("sections").getJSONObject(0)
+								.getJSONArray("metadata").getJSONObject(2).getString("text");
+					} catch (Exception e) {
+						e.printStackTrace();
 					}
-					new FadeOut(lyricArea).play();
-					lyricArea.setText(lyric);
-					new FadeIn(lyricArea).play();
-				} catch (Exception e) {
-					lyricArea.setText("No lyric found");
-				}
+
+					System.out.println(songName + " " + artistName + " " + songYear);
+					try {
+						String finalSongYear = songYear;
+						Platform.runLater(() -> {
+							songNameShazam(songName, artistName, finalSongYear);
+						});
+						JSONArray name = jo.getJSONObject("track").getJSONArray("sections").getJSONObject(1)
+								.getJSONArray("text");
+						String lyric = "";
+						for (Object linha : name) {
+							lyric = lyric + linha;
+							lyric = lyric + "\n";
+						}
+						new FadeOut(lyricArea).play();
+						lyricArea.setText(lyric);
+						new FadeIn(lyricArea).play();
+					} catch (Exception e) {
+						lyricArea.setText("No lyric found");
+					}
 
 				try {
 					changeAlbumCover(url, url2);
@@ -434,7 +447,12 @@ public class SampleController implements Initializable {
 					e.printStackTrace();
 				}
 				return null;
+				} catch (Exception e ) {
+					e.printStackTrace();
+				}
 
+
+				return null;
 			}
 		};
 		new Thread(task).start();
